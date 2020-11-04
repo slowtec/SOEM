@@ -840,6 +840,16 @@ int ecx_readPDOmap(ecx_contextt *context, uint16 Slave, int *Osize, int *Isize)
             {
                SMt_bug_add = 1; // try to correct, this works if the types are 0 1 2 3 and should be 1 2 3 4
             }
+            // Big endian error ------------------------Start of Mecademic Patch
+            else if((iSM == 2) && (tSM == 4))
+            {
+               tSM = 3;
+            }
+            else if((iSM == 3) && (tSM == 3))
+            {
+               tSM = 4;
+            }//----------------------------------------------End of Patch
+
             if(tSM)
             {
                tSM += SMt_bug_add; // only add if SMt > 0
@@ -943,6 +953,16 @@ int ecx_readPDOmapCA(ecx_contextt *context, uint16 Slave, int Thread_n, int *Osi
          {
             SMt_bug_add = 1; // try to correct, this works if the types are 0 1 2 3 and should be 1 2 3 4
          }
+         // Big endian error ------------------------Start of Mecademic Patch
+         else if((iSM == 2) && (tSM == 4))
+         {
+            tSM = 3;
+         }
+         else if((iSM == 3) && (tSM == 3))
+         {
+            tSM = 4;
+         }//----------------------------------------------End of Patch
+
          if(tSM)
          {
             tSM += SMt_bug_add; // only add if SMt > 0
