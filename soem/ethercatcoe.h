@@ -88,6 +88,11 @@ int ecx_readODdescription(ecx_contextt *context, uint16 Item, ec_ODlistt *pODlis
 int ecx_readOEsingle(ecx_contextt *context, uint16 Item, uint8 SubI, ec_ODlistt *pODlist, ec_OElistt *pOElist);
 int ecx_readOE(ecx_contextt *context, uint16 Item, ec_ODlistt *pODlist, ec_OElistt *pOElist);
 
+/* plumbing for ecx_SDOread */
+int ecx_SDOread_clear(ecx_contextt *context, ec_mbxbuft *pMbxIn, ec_mbxbuft *pMbxOut, uint16 slave);
+int ecx_SDOread_send(ecx_contextt *context, ec_mbxbuft *pMbxIn, ec_mbxbuft *pMbxOut, uint16 slave, uint16 index, uint8 subindex, boolean CA);
+int ecx_SDOread_receive(ecx_contextt *context, ec_mbxbuft *pMbxIn, ec_mbxbuft *pMbxOut, uint16 slave, uint16 index, uint8 subindex, int *psize, void *p, int timeout);
+
 #ifdef __cplusplus
 }
 #endif
